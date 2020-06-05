@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+    <label for="inputPeso"> Peso: </label>
+<input id="inputPeso" type="text">
+
+<label for="inputAltura"> Altura: </label>
+<input id="inputAltura" type="text">
+
+<button id="botaoCalcular" onclick="calcular()"> Calcular IMC </button>
+
+<script language="JavaScript">
+    function formatamedida(numero){
+    return numero.toFixed(2).replace(".",",")
+  } 
+  
+  function calcular (){
+  
+  Peso=inputPeso.value.replace(',','.')
+  Altura=inputAltura.value.replace(',','.')
+  imc=(Peso/(Altura*Altura))
+  
+  if(imc<17){sig=" Muito abaixo do Peso"}
+  if(imc==17){sig="Abaixo do Peso"}
+  if(imc>17 && imc<18.49){sig="Abaixo do Peso"}
+  if(imc>18.5 && imc<24.99){sig=" no Peso Normal"}
+  if(imc>25 && imc<29.99){sig="Acima do peso"}
+  if(imc>30 && imc<34.99){sig=" em Obesidade I"}
+  if(imc>35 && imc<39.99){sig="em Obesidade II"}
+    
+  botaoCalcular.innerHTML='Seu IMC é: '+formatamedida(imc)+"<br>Você está: "+sig
+  
+  }
+</script>
+</body>
+</html>
